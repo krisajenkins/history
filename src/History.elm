@@ -5,7 +5,7 @@ module History exposing (Router, Path, create)
 @docs Router, Path, create
 -}
 
-import Exts.String exposing (removePrefix)
+import Utils exposing (removePrefix)
 import String exposing (split, join)
 
 
