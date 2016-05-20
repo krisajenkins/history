@@ -1,24 +1,28 @@
-module History exposing (Router, Path, create)
+module History exposing (History, Router, Parser, Path, create)
 
 {-| Manage browser history and link creation using the HTML5 history API.
 
-@docs Router, Path, create
+@docs History, Router, Parser, Path, create
 -}
 
 import Utils exposing (removePrefix)
 import String exposing (split, join)
 
 
-{-| A `Router` is a function which can turn your `view` types into strings.
-
-
-    a [href (router (AccountView accountnumber))] [...]
-
+{-| History's prime concern is turning URIs into views, and views into URIs.
 -}
+type alias History view =
+    { parser : String -> view
+    , router : view -> String
+    }
+
+
+{-| -}
 type alias Router view =
     view -> String
 
 
+{-| -}
 type alias Parser view =
     String -> view
 
@@ -29,12 +33,6 @@ type alias Parser view =
 -}
 type alias Path =
     List String
-
-
-type alias History view =
-    { parser : String -> view
-    , router : view -> String
-    }
 
 
 {-| Create a history manager by supplying one function that goes from
