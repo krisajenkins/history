@@ -5,8 +5,8 @@ module History exposing (History, Router, Parser, Path, create)
 @docs History, Router, Parser, Path, create
 -}
 
-import Utils exposing (removePrefix)
 import String exposing (split, join)
+import Utils exposing (removePrefix)
 
 
 {-| History's prime concern is turning URIs into views, and views into URIs.
